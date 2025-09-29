@@ -1,16 +1,29 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+@using MudBlazor
+@using AlikathWeb.Theme
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+<MudThemeProvider Theme="SiteTheme.Value" />
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudText Color="Color.Secondary" Typo="Typo.h5" Class="ml-3 absolute">Alikath</MudText>
+        <MudSpacer />
+        <MudGrid Justify="Justify.Center" Spacing="3">
+            <MudItem>
+                <MudButton Variant="Variant.Text" Href="/">Home</MudButton>
+            </MudItem>
+            <MudItem>
+                <MudButton Variant="Variant.Text" Href="/Counter">Counter</MudButton>
+            </MudItem>
+            <MudItem>
+                <MudButton Variant="Variant.Text" Href="/Weather">Weather</MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudAppBar>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>    

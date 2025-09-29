@@ -1,7 +1,37 @@
 ﻿@page "/"
+@using MudBlazor;
+@using AlikathWeb.Theme
+
+<MudThemeProvider Theme="SiteTheme.Value" />
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+@* <MudPaper Width="30%" Style="invisible">
+    <MudGrid Justify="Justify.Center">
+        <MudItem xs="12">
+            <MudPaper Style="invisible">
+                <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">Hello, world!</MudText>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12">
+            <MudPaper Style="invisible">
+                <MudText Typo="Typo.h5" Align="Align.Center" GutterBottom="true">Welcome to your new app.</MudText>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudPaper> *@
 
-Welcome to your new app.
+<MudContainer Class="mt-16 px-8" MaxWidth="MaxWidth.False">
+    <MudStack Spacing="3" AlignItems="AlignItems.Center">
+        <MudPaper Class="p-4" Width="600px" Elevation="2">
+            <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">Hello, everyone!</MudText>
+        </MudPaper>
+        <MudPaper Class="p-4" Width="600px" Elevation="2">
+            <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">My name is Don Pollo!</MudText>
+            
+        </MudPaper>
+        <MudPaper Class="p-4" Width="600px" Elevation="2">
+            <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">I live in only Ohio!</MudText>
+        </MudPaper>
+    </MudStack>
+</MudContainer>
