@@ -1,4 +1,4 @@
-name: Deploy static site to Pages
+name: Build & deploy Blazor WASM to Pages
 
 on:
   push:
@@ -18,11 +18,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      # Your site is just static files in the root
-      - uses: actions/upload-pages-artifact@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
-          path: "."
+          dotnet-version: "8.0.x"
+
+      - name: Publish Blazor WASM
+        run: dotnet publish AlikathWeb/AlikathWeb.csproj -c Release -o build
+
+      - name: Upload artifact for Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/wwwroot
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
