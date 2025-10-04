@@ -1,0 +1,128 @@
+﻿@page "/projects"
+@using MudBlazor;
+@using AlikathWeb.Theme
+
+<MudThemeProvider Theme="SiteTheme.Value" />
+
+<PageTitle>Projects</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-6">
+
+    <MudText Typo="Typo.h3" GutterBottom="true">Projects / Future Ideas</MudText>
+    <MudText Typo="Typo.subtitle1" Class="mb-4">
+        A simple list of things I want to build or explore. (Edit this page directly.)
+    </MudText>
+
+    <!-- Planned -->
+    <MudDivider Class="my-4" />
+    <MudStack Row="true" AlignItems="AlignItems.Center" Spacing="1">
+        <MudText Typo="Typo.h5">Planned</MudText>
+        <MudChip T="string" Color="Color.Info" Variant="Variant.Outlined" Size="Size.Small">next up</MudChip>
+    </MudStack>
+
+    <MudGrid Class="mt-2" GutterSize="3">
+        <MudItem xs="12" md="6">
+            <MudCard Elevation="2">
+                <MudCardContent>
+                    <MudStack Spacing="1">
+                        <MudText Typo="Typo.h6">Solar System Visualizer</MudText>
+                        <MudText Typo="Typo.body2">
+                            Basic 2D orbits with scale sliders (speed, size). Pause/step controls.
+                        </MudText>
+                        <MudChipSet T="string">
+                            <MudChip T="string" Color="Color.Secondary" Variant="Variant.Outlined" Size="Size.Small">graphics</MudChip>
+                            <MudChip T="string" Color="Color.Tertiary" Variant="Variant.Outlined" Size="Size.Small">sim</MudChip>
+                            <MudChip T="string" Color="Color.Success" Variant="Variant.Outlined" Size="Size.Small">learning</MudChip>
+                        </MudChipSet>
+                    </MudStack>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudItem xs="12" md="6">
+            <MudCard Elevation="2">
+                <MudCardContent>
+                    <MudStack Spacing="1">
+                        <MudText Typo="Typo.h6">Sorting Visualizer</MudText>
+                        <MudText Typo="Typo.body2">
+                            Bubble/Insertion/Quick sort bars; adjustable array size + speed.
+                        </MudText>
+                        <MudChipSet T="string">
+                            <MudChip T="string" Color="Color.Warning" Variant="Variant.Outlined" Size="Size.Small">algorithms</MudChip>
+                            <MudChip T="string" Color="Color.Success" Variant="Variant.Outlined" Size="Size.Small">learning</MudChip>
+                        </MudChipSet>
+                    </MudStack>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="6">
+            <MudCard Elevation="2">
+                <MudCardContent>
+                    <MudStack Spacing="1">
+                        <MudText Typo="Typo.h6">Custom Virtual Machine Emulator</MudText>
+                        <MudText Typo="Typo.body2">
+                            Make my own VM-emulator for a custom 16-bit virtual CPU with framebuffer graphics, assembler, and possibly some demo games.
+                        </MudText>
+                        <MudChipSet T="string">
+                            <MudChip T="string" Color="Color.Warning" Variant="Variant.Outlined" Size="Size.Small">algorithms</MudChip>
+                            <MudChip T="string" Color="Color.Tertiary" Variant="Variant.Outlined" Size="Size.Small">sim</MudChip>
+                            <MudChip T="string" Color="Color.Success" Variant="Variant.Outlined" Size="Size.Small">learning</MudChip>
+                        </MudChipSet>
+                    </MudStack>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- In Progress -->
+    <MudDivider Class="my-4" />
+    <MudStack Row="true" AlignItems="AlignItems.Center" Spacing="1">
+        <MudText Typo="Typo.h5">In Progress</MudText>
+        <MudChip T="string" Color="Color.Warning" Variant="Variant.Outlined" Size="Size.Small">WIP</MudChip>
+    </MudStack>
+
+    <MudGrid Class="mt-2" GutterSize="3">
+        <MudItem xs="12" md="6">
+            <MudCard Elevation="2">
+                <MudCardContent>
+                    <MudStack Spacing="1">
+                        <MudText Typo="Typo.h6">Overwatch Profile Page</MudText>
+                        <MudText Typo="Typo.body2">
+                            Display core stats; keep it simple. Later: top heroes table.
+                        </MudText>
+                        <MudChipSet T="string">
+                            <MudChip T="string" Color="Color.Info" Variant="Variant.Outlined" Size="Size.Small">api</MudChip>
+                            <MudChip T="string" Color="Color.Primary" Variant="Variant.Outlined" Size="Size.Small">ui</MudChip>
+                        </MudChipSet>
+                    </MudStack>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Ideas / Backlog -->
+    <MudDivider Class="my-4" />
+    <MudStack Row="true" AlignItems="AlignItems.Center" Spacing="1">
+        <MudText Typo="Typo.h5">Ideas / Backlog</MudText>
+        <MudChip T="string" Color="Color.Secondary" Variant="Variant.Outlined" Size="Size.Small">someday</MudChip>
+    </MudStack>
+
+    <MudList T="string" Dense="true" Class="mt-2">
+        <MudListItem T="string">
+            <MudText Typo="Typo.subtitle2">Pathfinding Demo</MudText>
+            <MudText Typo="Typo.caption">A*, Dijkstra on a grid with walls and weights.</MudText>
+        </MudListItem>
+        <MudListItem T="string">
+            <MudText Typo="Typo.subtitle2">Neural Network Rework</MudText>
+            <MudText Typo="Typo.caption">Rework my old neural network project, and maybe make some type of visualization for it.</MudText>
+        </MudListItem>
+    </MudList>
+
+    <!-- Notes -->
+    <MudDivider Class="my-4" />
+    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined">
+        Edit this page directly to add/remove items. No backend, no forms. Just text.
+    </MudAlert>
+
+</MudContainer>
