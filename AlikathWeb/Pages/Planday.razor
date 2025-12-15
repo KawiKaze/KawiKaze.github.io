@@ -1,0 +1,39 @@
+﻿@page "/planday"
+@using MudBlazor;
+@using AlikathWeb.Theme
+
+<MudThemeProvider Theme="SiteTheme.Value" />
+
+<PageTitle>Planday</PageTitle>
+
+<MudCalendar Style="height: 100%; background-color: rgba(242, 242, 242, 1) !important;" T="CalendarItem" Items="_events" ItemClicked="ItemClicked" ShowTodayButton ShowDay="false" ShowWeek="false">
+
+</MudCalendar>
+
+@code {
+    [Inject]
+    private IDialogService DialogService { get; set; }
+
+    private DateTime _currentDate = DateTime.Now;
+
+    private List<CalendarItem> _events = new()
+    {
+        new CalendarItem
+        {
+            Start = DateTime.Today.AddHours(10),
+            End = DateTime.Today.AddHours(11),
+            Text = "Event today"
+        },
+        new CalendarItem
+        {
+            Start = DateTime.Today.AddDays(1).AddHours(11),
+            End = DateTime.Today.AddDays(1).AddHours(12.5),
+            Text = "Event tomorrow"
+        }
+    };
+
+    private Task ItemClicked(CalendarItem item)
+    {
+        return DialogService.ShowMessageBox("Item Clicked", item.Text);
+    }
+}

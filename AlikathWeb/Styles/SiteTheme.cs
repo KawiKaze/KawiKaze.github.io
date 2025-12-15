@@ -14,11 +14,26 @@ namespace AlikathWeb.Theme
             //  rgba(51,51,51,1) - Light Gray
             //  rgba(32,33,35,1) - Dark Gray
 
+
+
+            //PaletteLight = new PaletteLight()
+            //{
+            //    Primary = "rgba(255,255,255,1)",
+            //    Secondary = "rgba(240,99,20,1)",
+            //    Tertiary = "rgba(0,184,228,1)",
+            //    Background = "rgba(242,242,242,1)",       ALL OF THIS IS OG
+            //    Surface = "rgba(255,255,255,1)",
+            //    TextPrimary = "rgba(0,0,0,1)",
+            //    TextSecondary = "rgba(255,255,255,1)",
+            //    AppbarBackground = "rgba(255,255,255,1)",
+            //    AppbarText = "rgba(0,0,0,1)"
+            //},
+
             PaletteLight = new PaletteLight()
             {
-                Primary = "rgba(255,255,255,1)",
-                Secondary = "rgba(240,99,20,1)",
-                Tertiary = "rgba(0,184,228,1)",
+                Primary = "rgba(240,99,20,1)",    // Your orange — great for buttons!
+                Secondary = "rgba(240,99,20,1)",  // Keep cyan as secondary
+                Tertiary = "rgba(0,184,228,1)", // Or swap if you prefer
                 Background = "rgba(242,242,242,1)",
                 Surface = "rgba(255,255,255,1)",
                 TextPrimary = "rgba(0,0,0,1)",

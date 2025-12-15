@@ -3,13 +3,13 @@
 @using AlikathWeb.Theme
 
 <MudThemeProvider Theme="SiteTheme.Value" />
-
+<MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 <MudLayout>
     <MudAppBar Elevation="1">
-        <MudText Color="Color.Secondary" Typo="Typo.h5" Class="ml-3 absolute">Alikath</MudText>
+        <MudText Color="Color.Secondary" Typo="Typo.h5" Class="ml-3 absolute d-sm-inline d-none">Alikath</MudText>
         <MudSpacer />
         <MudGrid Justify="Justify.Center" Spacing="3">
             <MudItem>
@@ -19,14 +19,14 @@
                 <MudButton Variant="Variant.Text" Href="/projects">Projects</MudButton>
             </MudItem>
             <MudItem>
-                <MudButton Variant="Variant.Text" Href="/Counter">Counter</MudButton>
+                <MudButton Variant="Variant.Text" Href="/planday">Planday</MudButton>
             </MudItem>
             <MudItem>
                 <MudButton Variant="Variant.Text" Href="/Weather">Weather</MudButton>
             </MudItem>
         </MudGrid>
     </MudAppBar>
-    <MudMainContent>
+    <MudMainContent Style="height: 100%">
         @Body
     </MudMainContent>
 </MudLayout>    
