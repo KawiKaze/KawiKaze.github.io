@@ -8,9 +8,14 @@
 
   <ItemGroup>
     <PackageReference Include="Heron.MudCalendar" Version="3.3.0" />
+    <PackageReference Include="Ical.Net" Version="5.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.19" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.19" PrivateAssets="all" />
     <PackageReference Include="MudBlazor" Version="8.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\data\" />
   </ItemGroup>
 
 </Project>

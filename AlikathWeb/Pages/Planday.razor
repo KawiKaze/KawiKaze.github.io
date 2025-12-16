@@ -1,39 +1,64 @@
 ﻿@page "/planday"
-@using MudBlazor;
-@using AlikathWeb.Theme
-
-<MudThemeProvider Theme="SiteTheme.Value" />
+@using Heron.MudCalendar
+@using MudBlazor
+@using Ical.Net
+@using Ical.Net.CalendarComponents
+@inject HttpClient Http
+@inject IDialogService DialogService
 
 <PageTitle>Planday</PageTitle>
 
-<MudCalendar Style="height: 100%; background-color: rgba(242, 242, 242, 1) !important;" T="CalendarItem" Items="_events" ItemClicked="ItemClicked" ShowTodayButton ShowDay="false" ShowWeek="false">
-
-</MudCalendar>
+<MudCalendar Style="height: 100%; background-color: rgba(242, 242, 242, 1) !important;"
+             T="CalendarItem"
+             Items="_events"
+             ItemClicked="ItemClicked"
+             ShowTodayButton
+             ShowDay="false" />
 
 @code {
-    [Inject]
-    private IDialogService DialogService { get; set; }
+    private List<CalendarItem> _events = new();
 
-    private DateTime _currentDate = DateTime.Now;
-
-    private List<CalendarItem> _events = new()
+    protected override async Task OnInitializedAsync()
     {
-        new CalendarItem
+        await LoadSchedule();
+    }
+
+    private async Task LoadSchedule()
+    {
+        try
         {
-            Start = DateTime.Today.AddHours(10),
-            End = DateTime.Today.AddHours(11),
-            Text = "Event today"
-        },
-        new CalendarItem
-        {
-            Start = DateTime.Today.AddDays(1).AddHours(11),
-            End = DateTime.Today.AddDays(1).AddHours(12.5),
-            Text = "Event tomorrow"
+            var icsText = await Http.GetStringAsync("data/Avtal.ics");
+            ParseIcs(icsText);
         }
-    };
+        catch (Exception ex)
+        {
+            Console.WriteLine("Failed to load Avtal.ics: " + ex.Message);
+        }
+    }
 
-    private Task ItemClicked(CalendarItem item)
+    private void ParseIcs(string icsText)
     {
-        return DialogService.ShowMessageBox("Item Clicked", item.Text);
+        _events.Clear();
+
+        var calendar = Calendar.Load(icsText);
+
+        foreach (var evt in calendar.Events)
+        {
+            if (evt.DtStart == null || evt.DtEnd == null) continue;
+
+            _events.Add(new CalendarItem
+            {
+                Start = evt.DtStart.Value,
+                End = evt.DtEnd.Value
+            });
+        }
+
+        StateHasChanged();
+    }
+
+    private async Task ItemClicked(CalendarItem item)
+    {
+        var time = $"{item.Start:HH:mm} – {item.End:HH:mm}";
+        DialogService.ShowMessageBox("Work Shift", $"{item.Start:dddd, MMMM d} | {time}");
     }
 }
